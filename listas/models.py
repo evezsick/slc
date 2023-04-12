@@ -10,8 +10,8 @@ class SLC(models.Model):
 
 class Evento(models.Model):
     produto = models.ForeignKey(SLC, on_delete=models.CASCADE, related_name="produtos")
-    preco = models.IntegerField()
-    quantidade = models.IntegerField()
+    preco = models.IntegerField(0)
+    quantidade = models.IntegerField(0)
 
     def __str__(self):
         return f"{self.id}: {self.produto}"
