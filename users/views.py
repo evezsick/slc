@@ -1,5 +1,5 @@
-from django.shortcuts import render, HttpResponseRedirect, reverse, authenticate, login, logout
-from .models import SLC, Evento
+from django.shortcuts import render, HttpResponseRedirect, reverse
+from django.contrib.auth import authenticate, login, logout
 
 def index(request):
     if not request.user.is_authenticated:
