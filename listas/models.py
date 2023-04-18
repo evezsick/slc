@@ -1,21 +1,14 @@
 from django.db import models
 
-class SLC(models.Model):
-    listas = models.CharField(max_length=64)
-
-    def __str__(self):
-        return f"{self.listas}"
-    
 class Lista(models.Model):
-    nome = models.ForeignKey(SLC, on_delete=models.CASCADE, related_name="nomes")
-
+    nome = models.CharField(max_length=100)
     def __str__(self):
         return f"{self.id} {self.nome}"
 
-class Evento(models.Model):
-    produto = models.ForeignKey(SLC, on_delete=models.CASCADE, related_name="produtos")
-    preco = models.IntegerField(0)
-    quantidade = models.IntegerField(0)
+class Product(models.Model):
+    produto = models.CharField(max_length=100)
+    preco = models.DecimalField(max_digits=9, decimal_places=2)
+    quantidade = models.IntegerField()
 
     def __str__(self):
-        return f"ID:{self.id} Preço:{self.preco}  Produto:{self.compra}"
+        return f"ID:{self.id} Preço:{self.preco}  Produto:{self.produto}"

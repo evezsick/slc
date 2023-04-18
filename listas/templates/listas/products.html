@@ -1,0 +1,16 @@
+
+{% extends "listas/layout.html" %}
+
+{% block body %}
+
+    <ul>
+        {% for product in products %}
+            <a href="{% url 'update_product' product.id %}">
+                <li> {{ product.produto }}</li>
+            </a>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'create_products' %}">Novo Produto</a>
+    
+    {% endblock %}

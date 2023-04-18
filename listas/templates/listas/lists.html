@@ -1,0 +1,16 @@
+
+{% extends "listas/layout.html" %}
+
+{% block body %}
+
+    <ul>
+        {% for nome in lista %}
+            <a href="{% url 'update_list' lista.id %}">
+                <li> {{ lista.nome }}</li>
+            </a>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'create_list' %}">Nova Lista</a>
+    
+    {% endblock %}

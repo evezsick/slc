@@ -2,11 +2,30 @@
 {% extends "listas/layout.html" %}
 
 {% block body %}
-    <h1>Listas de Compras:</h1>
-    <ul>
-        {% for produto in Evento %}
-            <li><a href="{% url 'Evento' produto.id %}">Evento {{ produto.id }}</a>: {{ produto.preco }} {{ produto.quantidade }}</li>
-        {% endfor %}
-    </ul>
+
+<h1>Olá, {{ request.user.username }}</h1>
+<ul>
+    <li>Usuário Atual: {{ request.user.username }}</li>
+</ul>
+<a href="{% url 'logout' %}">Log Out</a>
+
+<ul>
+    {% for nome in lista %}
+        <a href="{% url 'update_nome' lista.id %}">
+            <li> {{ lista.nome }}</li>
+        </a>
+    {% endfor %}
+</ul>
+
+
+<ul>
+    {% for product in products %}
+        <a href="{% url 'update_product' product.id %}">
+            <li> {{ product.produto }}</li>
+        </a>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'create_products' %}">Novo Produto</a>
 
 {% endblock %}
