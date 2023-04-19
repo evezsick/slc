@@ -5,15 +5,14 @@ from .forms import ProductForm, ListaForm
 
 def index(request):
 	if not request.user.is_authenticated:
-		return HttpResponseRedirect(reverse("login"))
+		return HttpResponseRedirect(reverse("login_view"))
 	return render(request, "listas/index.html", {
 		"listas": Lista.objects.all()
 	})
 
-def Lista(request):
-    Listas = Product.objects.all()
-    return render(request, 'index.html', {'lista': Lista})
-
+def lista(request):
+    Listas = Lista.objects.all()
+    return render(request, 'listas/index.html', {'lista': Lista})
 
 def login_view(request):
     if request.method == "POST":
@@ -40,7 +39,7 @@ def logout_view(request):
 
 def list_products(request):
     products = Product.objects.all()
-    return render(request, 'products.html', {'produto': products})
+    return render(request, 'listas/products.html', {'produto': products})
 
 
 def create_product(request):
@@ -50,7 +49,7 @@ def create_product(request):
         form.save()
         return redirect('list_products')
 
-    return render(request, 'products-form.html', {'form': form})
+    return render(request, 'listas/products-form.html', {'form': form})
 
 
 def update_product(request, id):
@@ -61,7 +60,7 @@ def update_product(request, id):
         form.save()
         return redirect('list_products')
 
-    return render(request, 'products-form.html', {'form': form, 'produto': produto})
+    return render(request, 'listas/products-form.html', {'form': form, 'produto': produto})
 
 
 def delete_product(request, id):
@@ -71,7 +70,7 @@ def delete_product(request, id):
         produto.delete()
         return redirect('list_products')
 
-    return render(request, 'prod-delete-confirm.html', {'produto': produto})
+    return render(request, 'listas/prod-delete-confirm.html', {'produto': produto})
 
 def create_list(request):
     form = ListaForm(request.POST or None)
@@ -80,7 +79,7 @@ def create_list(request):
         form.save()
         return redirect('Lista')
 
-    return render(request, 'lists-form.html', {'form': form})
+    return render(request, 'listas/lists-form.html', {'form': form})
 
 
 def update_list(request, id):
@@ -91,7 +90,7 @@ def update_list(request, id):
         form.save()
         return redirect('Lista')
 
-    return render(request, 'lists-form.html', {'form': form, 'lista': nome})
+    return render(request, 'listas/lists-form.html', {'form': form, 'lista': nome})
 
 
 def delete_list(request, id):
@@ -101,4 +100,4 @@ def delete_list(request, id):
         nome.delete()
         return redirect('Lista')
 
-    return render(request, 'list-delete-confirm.html', {'lista': nome})
+    return render(request, 'listas/list-delete-confirm.html', {'lista': nome})

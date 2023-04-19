@@ -5,8 +5,8 @@
 
     <ul>
         {% for nome in lista %}
-            <a href="{% url 'update_list' lista.id %}">
-                <li> {{ lista.nome }}</li>
+            <a href="{% url 'update_list' nome.id %}">
+                <li> {{ nome.nome }}</li>
             </a>
         {% endfor %}
     </ul>

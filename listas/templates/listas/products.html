@@ -5,8 +5,8 @@
 
     <ul>
         {% for product in products %}
-            <a href="{% url 'update_product' product.id %}">
-                <li> {{ product.produto }}</li>
+            <a href="{% url 'update_product' produto.id %}">
+                <li> {{ produto.produto }}</li>
             </a>
         {% endfor %}
     </ul>

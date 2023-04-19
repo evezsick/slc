@@ -11,4 +11,4 @@ class Product(models.Model):
     quantidade = models.IntegerField()
 
     def __str__(self):
-        return f"ID:{self.id} Preço:{self.preco}  Produto:{self.produto}"
+        return f"ID:{self.id} Preço:{self.preco}  Produto:{self.produto} Quantidade:{self.quantidade}"
